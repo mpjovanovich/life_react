@@ -5,12 +5,12 @@ const GameGrid:React.FC<{
     numCols: number,
     numRows: number,
     isCellAlive: (col:number, row:number) => boolean,
-    toggleCell: (col:number, row:number) => void,
+    onToggleCell: (col:number, row:number) => void,
 }> = ({
     numCols,
     numRows,
     isCellAlive,
-    toggleCell,
+    onToggleCell,
 }) => {
     // Build the grid as a 2d array indexed by [col,row] with (0,0) in the top left corner.
     // This makes it much easier to visualize for debugging and testing.
@@ -27,7 +27,7 @@ const GameGrid:React.FC<{
                     col={col}
                     row={row}
                     isAlive={isCellAlive(col,row)} 
-                    onToggle={(col:number, row:number) => {toggleCell(col,row)}}
+                    onToggle={(col:number, row:number) => {onToggleCell(col,row)}}
                 />);
         }
     }

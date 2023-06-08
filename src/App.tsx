@@ -7,8 +7,9 @@ import Life from './Life'
 // is small.
 
 // TODO: user can set these later.
-const NUM_ROWS:number = 10;
-const NUM_COLS:number = 10;
+const NUM_ROWS:number = 15;
+const NUM_COLS:number = 15;
+const STEP_TIME_MS:number = 500;
 
 const life = new Life(NUM_ROWS, NUM_COLS);
 
@@ -18,9 +19,17 @@ const App:React.FC = () => {
     // const [gameState, setGameState] = React.useState(life.board);
     const [_,setGameState] = React.useState(life.board);
 
-    const handleToggleCell = (col:number, row:number) => {
+    const handleCellToggle = (col:number, row:number) => {
         life.toggleCell(col,row);
         setGameState(life.board);
+    }
+
+    const handleTimerToggle = () => {
+        const timer = setInterval(() => {
+            life.step(); 
+            setGameState(life.board)
+        }, STEP_TIME_MS);
+        return () => clearInterval(timer);
     }
 
     return (
@@ -38,8 +47,14 @@ const App:React.FC = () => {
             numCols={life.numCols}
             numRows={life.numRows}
             isCellAlive={life.isCellAlive} 
-            toggleCell={handleToggleCell} 
+            onToggleCell={handleCellToggle} 
         />
+
+        <div id="game-info">
+            <span id="generation">Generation: {life.generation}</span>
+            <button id="timer-button" onClick={() => {handleTimerToggle();}}>Start</button>
+            <button id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>Step</button>
+        </div>
     </div>
 </>
     )
