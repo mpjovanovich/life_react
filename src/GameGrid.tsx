@@ -1,30 +1,35 @@
+import React from 'react'
 import Cell from './Cell'
-import Life from './Life'
 
 const GameGrid:React.FC<{
-    gameState: Life,
+    numCols: number,
+    numRows: number,
+    isCellAlive: (col:number, row:number) => boolean,
+    toggleCell: (col:number, row:number) => void,
 }> = ({
-    gameState,
+    numCols,
+    numRows,
+    isCellAlive,
+    toggleCell,
 }) => {
+    console.log("GameGrid rendering.")
+
     // Build the grid as a 2d array indexed by [col,row] with (0,0) in the top left corner.
     // This makes it much easier to visualize for debugging and testing.
     const grid: React.ReactElement[][] = []
 
-    for (let row = 0; row < gameState.numRows; row++) {
+    for (let row = 0; row < numRows; row++) {
         grid.push([])
-        for (let col = 0; col < gameState.numCols; col++) {
-            const cellNumber = (row * gameState.numCols) + col
+        for (let col = 0; col < numCols; col++) {
+            const cellNumber = (row * numCols) + col
             grid[row].push(
                 <Cell 
                     // I don't know why we need this, but the console complains if we don't have it.
                     key={cellNumber}
                     col={col}
                     row={row}
-                    isAlive={gameState.isCellAlive(col,row)} 
-                    // ^^^^ This is a stateful variable.
-                    // We need to make a call to the setState handler from useState when toggling.
-                    // I don't want to make a state hook for each cell though.
-                    onToggle={(col:number, row:number) => {gameState.toggleCell(col,row)}}
+                    isAlive={isCellAlive(col,row)} 
+                    onToggle={(col:number, row:number) => {toggleCell(col,row)}}
                 />);
         }
     }
