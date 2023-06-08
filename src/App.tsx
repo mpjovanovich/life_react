@@ -10,12 +10,18 @@ import Life from './Life'
 const NUM_ROWS:number = 10;
 const NUM_COLS:number = 10;
 
+const life = new Life(NUM_ROWS, NUM_COLS);
+
 const App:React.FC = () => {
     // This is the hoisted variable for any component that needs to know about the game state.
-    const gameState = new Life(NUM_ROWS, NUM_COLS);
-    // const [gameState, setGameState] = React.useState(new Life(NUM_ROWS, NUM_COLS));
-    React.useEffect(() => {
-    }, [gameState]);
+    // I guess I don't need to actually use the gameState variable?
+    // const [gameState, setGameState] = React.useState(life.board);
+    const [_,setGameState] = React.useState(life.board);
+
+    const handleToggleCell = (col:number, row:number) => {
+        life.toggleCell(col,row);
+        setGameState(life.board);
+    }
 
     return (
 <>
@@ -28,7 +34,12 @@ const App:React.FC = () => {
 
     {/* Maybe make this a component later. */}
     <div id="game-container">
-        <GameGrid gameState={gameState} />
+        <GameGrid 
+            numCols={life.numCols}
+            numRows={life.numRows}
+            isCellAlive={life.isCellAlive} 
+            toggleCell={handleToggleCell} 
+        />
     </div>
 </>
     )

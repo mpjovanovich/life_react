@@ -1,4 +1,3 @@
-import React from 'react'
 
 export default class Life {
     // The board should be read only outside of the class to maintain a
@@ -11,7 +10,7 @@ export default class Life {
     private _board: boolean[][];
 
     // This is a copy of the board that gets updated when the board is updated.
-    board: readonly(readonly boolean[])[];
+    board: readonly(readonly boolean[])[] = [];
 
     numRows:number;
     numCols:number;
@@ -20,13 +19,13 @@ export default class Life {
         this.numRows = numRows;
         this.numCols = numCols;
         this._board = this.initializeBoard()
-        this.board = [...this._board]
+        this.cloneBoard();
     }
 
     /* ******************************************************* */
     /* PRIVATE METHODS */
     /* ******************************************************* */
-    private initializeBoard():boolean[][] {
+    private initializeBoard = () => {
         // We'll start with a boolean 2d array to represent the board state.
         const board: boolean[][] = []
         for (let row = 0; row < this.numRows; row++) {
@@ -38,15 +37,16 @@ export default class Life {
         return board;
     }
 
+    // private cloneBoard = () => this.board = structuredClone(this._board)
+    private cloneBoard = () => this.board = [...this._board]
+
     /* ******************************************************* */
     /* PUBLIC METHODS */
     /* ******************************************************* */
-    isCellAlive(col:number, row:number):boolean { return this._board[col][row]; }
+    isCellAlive = (col:number, row:number) => { return this._board[col][row]; }
 
-    toggleCell(col:number, row:number):void { 
-        console.log(`Togglin before: ${col}, ${row}, ${this._board[col][row]}`);
+    toggleCell = (col:number, row:number) => { 
         this._board[col][row] = !this._board[col][row];
-        this.board = [...this._board]
-        console.log(`Togglin after: ${col}, ${row}, ${this._board[col][row]}`);
+        this.cloneBoard();
     }
 }

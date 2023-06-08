@@ -12,8 +12,6 @@ const GameGrid:React.FC<{
     isCellAlive,
     toggleCell,
 }) => {
-    console.log("GameGrid rendering.")
-
     // Build the grid as a 2d array indexed by [col,row] with (0,0) in the top left corner.
     // This makes it much easier to visualize for debugging and testing.
     const grid: React.ReactElement[][] = []

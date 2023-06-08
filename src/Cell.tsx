@@ -9,11 +9,13 @@ const Cell:React.FC<{
     row,
     isAlive,
     onToggle
-}) => (
+}) => { 
+    return (
 <div 
     className={`cell ${isAlive ? "alive" : "dead"}`} 
     onClick={() => onToggle(col,row)}
-    />
-);
+/>
+    )
+};
 
 export default Cell 

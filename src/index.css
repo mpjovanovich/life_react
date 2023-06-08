@@ -39,7 +39,7 @@ h1 {
 /* Classes */
 /* **************************************************************** */
 .alive {
-    background-color: blue;
+    background-color: lightgray;
 }
 
 .cell {
@@ -48,7 +48,7 @@ h1 {
 }
 
 .dead {
-    background-color: red;
+    background-color: black;
 }
 
 .subheading {
