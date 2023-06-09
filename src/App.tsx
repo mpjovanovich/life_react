@@ -4,12 +4,15 @@ import Life from './Life'
 
 // TODO:
 // * Add a reset button.
-// * Add a border or something on the start/stop button if app is in the running state. Make generation text bold.
+// * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
 // * Allow user to select grid size.
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
+
+// React TypeScript Cheatsheets:
+// https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
 
 const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
