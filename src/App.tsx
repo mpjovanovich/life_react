@@ -2,11 +2,17 @@ import React from 'react'
 import GameGrid from "./GameGrid"
 import Life from './Life'
 
-// TODO: Style for the game should match the logo - ink sketch with desert theme.
+// TODO:
+
+// Fix start/stop button. Text should change. Stop isn't working.
+
+// Add a reset button.
+
 // Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
 
-// TODO: user can set these later.
+// Allow user to select grid size.
+
 const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
 const STEP_TIME_MS:number = 500;
@@ -38,7 +44,6 @@ const App:React.FC = () => {
         <div id="logo-container">
             <h1 id="logo-text">Game of Life</h1>
         </div>
-        <h2 className="subheading">Stuff and things.</h2>
     </header>
 
     {/* Maybe make this a component later. */}
@@ -50,7 +55,7 @@ const App:React.FC = () => {
             onToggleCell={handleCellToggle} 
         />
 
-        <div id="game-info">
+        <div id="game-controls">
             <span id="generation">Generation: {life.generation}</span>
             <button id="timer-button" onClick={() => {handleTimerToggle();}}>Start</button>
             <button id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>Step</button>
