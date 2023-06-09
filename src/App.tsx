@@ -4,6 +4,7 @@ import Life from './Life'
 
 // TODO:
 // * Add a reset button.
+// * Disable all other buttons and functionality if the timer is running.
 // * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
@@ -74,8 +75,8 @@ const App:React.FC = () => {
                 <span className="float-right" style={{fontWeight: `${timerId ? "bold" : "normal"}`}}>{life.generation}</span>
             </div>
             <button id="timer-button" className={`${timerId && "running-button"}`} onClick={() => {handleTimerToggle();}}>{timerText}</button>
-            <button id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>STEP</button>
-            {/* <button id="reset-button" onClick={() => {life.resetBoard(); setGameState(life.board);}}>CLEAR</button> */}
+            <button disabled={timerId != null} id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>STEP</button>
+            <button disabled={timerId != null} id="reset-button" onClick={() => { /*TODO*/; setGameState(life.board);}}>CLEAR</button>
         </div>
     </div>
 </>
