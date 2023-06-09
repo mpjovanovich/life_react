@@ -3,27 +3,31 @@ import GameGrid from "./GameGrid"
 import Life from './Life'
 
 // TODO:
-
-// Fix start/stop button. Text should change. Stop isn't working.
-
-// Add a reset button.
-
-// Get AI to gen icons for the cells; make sure they're in a good format and file size
+// * Add a reset button.
+// * Add a border or something on the start/stop button if app is in the running state. Make generation text bold.
+// * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
-
-// Allow user to select grid size.
+// * Allow user to select grid size.
+// * Add a link to the github repo in the footer.
+// * Publish/host on replit. Send to friends and family.
 
 const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
 const STEP_TIME_MS:number = 500;
 
-const life = new Life(NUM_ROWS, NUM_COLS);
-
 const App:React.FC = () => {
+    // The useMemo hook makes sure that the Life object is only created once; not
+    // every time the component re-renders.
+    const life = React.useMemo(() => new Life(NUM_ROWS, NUM_COLS), []);
+
     // This is the hoisted variable for any component that needs to know about the game state.
-    // I guess I don't need to actually use the gameState variable?
-    // const [gameState, setGameState] = React.useState(life.board);
     const [_,setGameState] = React.useState(life.board);
+
+    // The timer id is part of the state because it gets created/cleared on the button click.
+    const [timerId,setTimerId] = React.useState<number|null>(null);
+
+    // Text for the start/stop button.
+    const [timerText,setTimerText] = React.useState("START");
 
     const handleCellToggle = (col:number, row:number) => {
         life.toggleCell(col,row);
@@ -31,11 +35,17 @@ const App:React.FC = () => {
     }
 
     const handleTimerToggle = () => {
-        const timer = setInterval(() => {
-            life.step(); 
-            setGameState(life.board)
-        }, STEP_TIME_MS);
-        return () => clearInterval(timer);
+        if (timerId) {
+            clearInterval(timerId);
+            setTimerId(null);
+            setTimerText("START");
+        } else {
+            setTimerId (setInterval(() => {
+                life.step(); 
+                setGameState(life.board)
+            }, STEP_TIME_MS));
+            setTimerText("STOP");
+        }
     }
 
     return (
@@ -56,9 +66,13 @@ const App:React.FC = () => {
         />
 
         <div id="game-controls">
-            <span id="generation">Generation: {life.generation}</span>
-            <button id="timer-button" onClick={() => {handleTimerToggle();}}>Start</button>
-            <button id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>Step</button>
+            <div id="generation">
+                <span className="float-left">Generation: </span>
+                <span className="float-right" style={{fontWeight: `${timerId ? "bold" : "normal"}`}}>{life.generation}</span>
+            </div>
+            <button id="timer-button" className={`${timerId && "running-button"}`} onClick={() => {handleTimerToggle();}}>{timerText}</button>
+            <button id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>STEP</button>
+            {/* <button id="reset-button" onClick={() => {life.resetBoard(); setGameState(life.board);}}>CLEAR</button> */}
         </div>
     </div>
 </>

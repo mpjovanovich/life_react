@@ -10,16 +10,22 @@
 /* Fonts */
 /* **************************************************************** */
 @font-face {
-    font-family: "Regular";   /*Can be any text*/
+    font-family: "Calibri";
     src: local("Calibri"),
         url("./font/Calibri.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Calibri_bold";
+    src: local("Calibri Bold"),
+        url("./font/Calibri_bold.ttf") format("truetype");
 }
 
 /* **************************************************************** */
 /* Element styles */
 /* **************************************************************** */
 :root {
-    font-family: Regular, sans-serif;
+    font-family: Calibri, sans-serif;
     background-color: #c1c1c1;
 }
 
@@ -51,9 +57,17 @@ h1 {
     background-color: black;
 }
 
-.subheading {
-    font-size: 1.2em;
-    font-weight: 400;
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.running-button {
+    background-color: white !important;
+    /* color: white; */
 }
 
 /* **************************************************************** */
@@ -80,10 +94,14 @@ h1 {
 }
 
 #game-controls button {
+    background-color: #c1c1c1;
     border: none;
     border-radius: 4px;
-    padding: 8px 12px;
     cursor: pointer;
+    font-family: Calibri_bold, sans-serif;
+    font-size: .85em;
+    padding: 8px 12px;
+    width: 70px;
 }
 
 #game-grid {
@@ -92,6 +110,16 @@ h1 {
     grid-template-rows: repeat(15, 1fr);
     gap: 8px;
     margin: 25px auto;
+}
+
+#generation {
+    display: inline;
+    margin: auto 20px;
+    width: 125px;
+}
+
+#generation span {
+    margin: 0;
 }
 
 #logo-container {
@@ -105,7 +133,6 @@ h1 {
     position: relative;
     text-align: center;
     margin: 0 auto;
-    /* border: thick solid #ffddc0; */
 }
 
 #logo-text {
