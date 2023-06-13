@@ -3,11 +3,11 @@ import GameGrid from "./GameGrid"
 import Life from './Life'
 
 // TODO:
-// * Add favicon.
-// * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
-// * Allow user to select grid size. Maybe use a vertical and horizontal slider.
+// * Add favicon. favicon should match cell icons.
+// * Allow user to select grid size. Maybe use a vertical and horizontal slider. Should go below the game controls.
+// * Allow user to select time increment. Should go below the game controls.
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
 
@@ -16,8 +16,7 @@ import Life from './Life'
 
 const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
-// const STEP_TIME_MS:number = 500;
-const STEP_TIME_MS:number = 10;
+const STEP_TIME_MS:number = 500;
 
 const App:React.FC = () => {
     // The useMemo hook makes sure that the Life object is only created once; not

@@ -78,7 +78,7 @@ h1 {
     color: #222222;
     cursor: pointer;
     font-weight: 600;
-    margin: auto 2px;
+    margin: auto 3px;
     padding: 4px 0px;
     width: 64px;
 }
@@ -125,6 +125,7 @@ h1 {
     background-size: 384px 201px;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 4px;
     width: 384px;
     /* The bottom of the image is intentionally cropped. */
     height: 196px;
