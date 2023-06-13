@@ -16,10 +16,11 @@ export default class Life {
     numRows:number;
     numCols:number;
 
-    constructor(numRows:number, numCols:number) {
+    // constructor(numRows:number, numCols:number) {
+    constructor(numCols:number, numRows:number) {
         this.generation = 0;
-        this.numRows = numRows;
         this.numCols = numCols;
+        this.numRows = numRows;
         this._board = this.initializeBoard()
         this.cloneBoard();
     }
@@ -30,11 +31,8 @@ export default class Life {
     private initializeBoard = () => {
         // We'll start with a boolean 2d array to represent the board state.
         const board: boolean[][] = []
-        for (let row = 0; row < this.numRows; row++) {
-            board.push([])
-            for (let col = 0; col < this.numCols; col++) {
-                board[row].push(false)
-            }
+        for (let col = 0; col < this.numCols; col++) {
+            board.push(new Array(this.numRows))
         }
         return board;
     }

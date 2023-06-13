@@ -33,7 +33,10 @@ const GameGrid:React.FC<{
     }
 
     return (
-<div id="game-grid">
+<div id="game-grid" style={{
+    gridTemplateColumns: `repeat(${numCols},1fr)`,
+    gridTemplateRows: `repeat(${numRows},1fr)`
+}}>
     {grid}
 </div>
     )

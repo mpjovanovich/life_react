@@ -4,6 +4,7 @@ import Life from './Life'
 
 // TODO:
 // * Add a reset button.
+// * Add favicon.
 // * Disable all other buttons and functionality if the timer is running.
 // * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
@@ -15,14 +16,15 @@ import Life from './Life'
 // React TypeScript Cheatsheets:
 // https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
 
-const NUM_ROWS:number = 15;
+const NUM_ROWS:number = 10;
 const NUM_COLS:number = 15;
 const STEP_TIME_MS:number = 500;
 
 const App:React.FC = () => {
     // The useMemo hook makes sure that the Life object is only created once; not
     // every time the component re-renders.
-    const life = React.useMemo(() => new Life(NUM_ROWS, NUM_COLS), []);
+    // const life = React.useMemo(() => new Life(NUM_ROWS, NUM_COLS), []);
+    const life = React.useMemo(() => new Life(NUM_COLS, NUM_ROWS), []);
 
     // This is the hoisted variable for any component that needs to know about the game state.
     const [_,setGameState] = React.useState(life.board);
