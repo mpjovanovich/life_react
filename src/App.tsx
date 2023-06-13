@@ -5,12 +5,11 @@ import Life from './Life'
 // TODO:
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
+// * Make slider controls look better.
 // * Add favicon. favicon should match cell icons.
-// * Allow user to select grid size. Maybe use a vertical and horizontal slider. Should go below the game controls.
-// * Allow user to select time increment using a ??? control. Should go below the game controls.
-// * Disable the new elements above.
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
+// * Long term: Allow import of common game states.
 
 // React TypeScript Cheatsheets:
 // https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
@@ -35,8 +34,10 @@ const App:React.FC = () => {
     const [timerText,setTimerText] = React.useState("START");
 
     const handleCellToggle = (col:number, row:number) => {
-        life.toggleCell(col,row);
-        setGameState(life.board);
+        if (!timerId) {
+            life.toggleCell(col,row);
+            setGameState(life.board);
+        }
     }
 
     const handleTimerToggle = () => {
@@ -73,23 +74,22 @@ const App:React.FC = () => {
         </div>
 
         <div id="game-parameters">
-            <div className='game-parameter-container clear'>
-                <label htmlFor="rows">Rows:</label>
+            <label htmlFor="rows">Rows:</label>
+            <div>
                 <input disabled={timerId != null} type="range" id="rows" name="rows" min="10" max="50" value={rowCount}
                     onChange={(e) => setRowCount(parseInt(e.target.value))}></input>
+                <span className='slider-label'>({rowCount})</span>
             </div>
-            <div className='game-parameter-container clear'>
-                <label htmlFor="cols">Columns:</label>
+            <label htmlFor="cols">Columns:</label>
+            <div>
                 <input disabled={timerId != null} type="range" id="cols" name="cols" min="10" max="50" value={columnCount}
                     onChange={(e) => setColumnCount(parseInt(e.target.value))}></input>
+                <span className='slider-label'>({columnCount})</span>
             </div>
-            <div className='game-parameter-container clear'>
-                <label htmlFor="increment">Step Increment (ms):</label>
-                <input disabled={timerId != null} type="number" id="quantity" name="quantity" min="100" max="" step={100} value={stepIncrement} 
-                    onChange={(e) => setStepIncrement(parseInt(e.target.value))}></input>
-            </div>
+            <label htmlFor="increment">Increment (ms):</label>
+            <input disabled={timerId != null} type="number" id="quantity" name="quantity" min="100" max="" step={100} value={stepIncrement} 
+                onChange={(e) => setStepIncrement(parseInt(e.target.value))}></input>
         </div>
-        <div className='clear' />
 
         <div id="game-controls">
             <div id="generation">
