@@ -21,7 +21,6 @@ const STEP_TIME_MS:number = 500;
 const App:React.FC = () => {
     // The useMemo hook makes sure that the Life object is only created once; not
     // every time the component re-renders.
-    // const life = React.useMemo(() => new Life(NUM_ROWS, NUM_COLS), []);
     const life = React.useMemo(() => new Life(NUM_COLS, NUM_ROWS), []);
 
     // This is the hoisted variable for any component that needs to know about the game state.
