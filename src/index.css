@@ -7,25 +7,10 @@
 }
 
 /* **************************************************************** */
-/* Fonts */
-/* **************************************************************** */
-@font-face {
-    font-family: "Calibri";
-    src: local("Calibri"),
-        url("./font/Calibri.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Calibri_bold";
-    src: local("Calibri Bold"),
-        url("./font/Calibri_bold.ttf") format("truetype");
-}
-
-/* **************************************************************** */
 /* Element styles */
 /* **************************************************************** */
 :root {
-    font-family: Calibri, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #c1c1c1;
 }
 
@@ -81,13 +66,9 @@ h1 {
     background-color: #333333;
     color: #fff;
     display: flex;
-    font-size: 1.2em;
+    font-size: 1.1em;
     justify-content: center;
     padding: 10px;
-}
-
-#game-controls * {
-    margin: auto 6px;
 }
 
 #game-controls button {
@@ -96,10 +77,10 @@ h1 {
     border-radius: 4px;
     color: #222222;
     cursor: pointer;
-    font-family: Calibri_bold, sans-serif;
-    font-size: .85em;
-    padding: 4px 12px;
-    width: 70px;
+    font-weight: 600;
+    margin: auto 2px;
+    padding: 4px 0px;
+    width: 64px;
 }
 
 #game-controls button:disabled {
@@ -127,8 +108,12 @@ h1 {
 
 #generation {
     display: inline;
-    margin: auto 20px;
-    width: 125px;
+    margin: auto 10px auto 0px;
+    width: 130px;
+}
+
+#generation * {
+    margin: auto 2px;
 }
 
 #generation span {
@@ -149,9 +134,10 @@ h1 {
 }
 
 #logo-text {
-    position: absolute;
-    bottom: -.15em;
-    width: 100%;
+    bottom: -.12em;
     color: #ffddc0;
+    font-family: 'Marcellus', serif;
+    position: absolute;
     text-shadow: 0 0 .8em black;
+    width: 100%;
 }

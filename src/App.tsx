@@ -7,7 +7,7 @@ import Life from './Life'
 // * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
-// * Allow user to select grid size.
+// * Allow user to select grid size. Maybe use a vertical and horizontal slider.
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
 
@@ -16,7 +16,8 @@ import Life from './Life'
 
 const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
-const STEP_TIME_MS:number = 500;
+// const STEP_TIME_MS:number = 500;
+const STEP_TIME_MS:number = 10;
 
 const App:React.FC = () => {
     // The useMemo hook makes sure that the Life object is only created once; not
@@ -72,7 +73,7 @@ const App:React.FC = () => {
         <div id="game-controls">
             <div id="generation">
                 <span className="float-left">Generation: </span>
-                <span className="float-right" style={{fontWeight: `${timerId ? "bold" : "normal"}`}}>{life.generation}</span>
+                <span className="float-right" style={{fontWeight: `${timerId ? "600" : "normal"}`}}>{life.generation}</span>
             </div>
             <button id="timer-button" className={`${timerId && "running-button"}`} onClick={() => {handleTimerToggle();}}>{timerText}</button>
             <button disabled={timerId != null} id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>STEP</button>
