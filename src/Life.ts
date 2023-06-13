@@ -64,6 +64,17 @@ export default class Life {
     /* ******************************************************* */
     isCellAlive = (col:number, row:number) => { return this._board[col][row]; }
 
+    resetBoard = () => {
+        // We'll start with a boolean 2d array to represent the board state.
+        const new_board: boolean[][] = []
+        for (let col = 0; col < this.numCols; col++) {
+            new_board.push(new Array(this.numRows))
+        }
+        this._board = new_board;
+        this.cloneBoard();
+        this.generation = 0;
+    }
+
     step = () => {
         // This is the game of life algorithm.
         // https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules

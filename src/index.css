@@ -102,7 +102,11 @@ h1 {
     width: 70px;
 }
 
-#game-controls button:hover {
+#game-controls button:disabled {
+    color: #555555;
+}
+
+#game-controls button:hover:enabled {
     border: 2px solid #222222;
 }
 
@@ -112,7 +116,7 @@ h1 {
 }
 
 #game-controls .running-button:hover {
-    border: 2px solid #222222;
+    border: 3px solid #333333;
 }
 
 #game-grid {

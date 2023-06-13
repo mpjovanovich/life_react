@@ -3,9 +3,7 @@ import GameGrid from "./GameGrid"
 import Life from './Life'
 
 // TODO:
-// * Add a reset button.
 // * Add favicon.
-// * Disable all other buttons and functionality if the timer is running.
 // * Better font for title. Something script-ish.
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
@@ -16,7 +14,7 @@ import Life from './Life'
 // React TypeScript Cheatsheets:
 // https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
 
-const NUM_ROWS:number = 10;
+const NUM_ROWS:number = 15;
 const NUM_COLS:number = 15;
 const STEP_TIME_MS:number = 500;
 
@@ -78,7 +76,7 @@ const App:React.FC = () => {
             </div>
             <button id="timer-button" className={`${timerId && "running-button"}`} onClick={() => {handleTimerToggle();}}>{timerText}</button>
             <button disabled={timerId != null} id="step-button" onClick={() => {life.step(); setGameState(life.board);}}>STEP</button>
-            <button disabled={timerId != null} id="reset-button" onClick={() => { /*TODO*/; setGameState(life.board);}}>CLEAR</button>
+            <button disabled={timerId != null} id="reset-button" onClick={() => { life.resetBoard(); setGameState(life.board);}}>CLEAR</button>
         </div>
     </div>
 </>
