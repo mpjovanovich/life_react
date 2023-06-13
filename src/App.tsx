@@ -88,6 +88,7 @@ const App:React.FC = () => {
             </div>
             <label htmlFor="increment">Increment (ms):</label>
             <input disabled={timerId != null} type="number" id="quantity" name="quantity" min="100" max="" step={100} value={stepIncrement} 
+                style={{textAlign: 'right'}}
                 onChange={(e) => setStepIncrement(parseInt(e.target.value))}></input>
         </div>
 
