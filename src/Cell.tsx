@@ -14,8 +14,6 @@ const Cell:React.FC<{
 }) => { 
     return (
 <div 
-    // Not using cell-dead anymore; it just won't have anything on it.
-    // className={`cell ${paused && "cell-paused"} ${isAlive ? "cell-alive" : "cell-dead"}`} 
     className={`cell ${paused && "cell-paused"} ${isAlive && "cell-alive"}`} 
     onClick={() => onToggle(col,row)}
 />

@@ -3,17 +3,8 @@ import GameGrid from "./GameGrid"
 import Life from './Life'
 
 // TODO:
-// * Get AI to gen icons for the cells; make sure they're in a good format and file size
-// is small.
-//   - https://www.npmjs.com/package/ai-icon-generator
-//   - horseshoe crab outline
-//   - When game is in pause mode, all cells have a black transparent bg
-//   - When it's running the bg goes away.
-//   - When a cell births/dies it has an animation on the bg image (crab fades in/out).
-//   - Will need to compare current to previous world state to figure out births/deaths.
-//   - These can go in their own matrices; one for birth and one for death.
 // * Run accessibility/compatibility checks (lighthouse in browser dev toolbar)
-// * Add favicon. favicon should match cell icons.
+// * favicon note working...
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
 // * Long term: Allow import of common game states.

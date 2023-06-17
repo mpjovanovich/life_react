@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [
     react(),
     vitePluginFaviconsInject('./src/assets/favicon.png')
-    // vitePluginFaviconsInject('./src/assets/favicon.ico')
   ],
 
   // Had to add this bit to get HMR to work.
