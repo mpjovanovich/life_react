@@ -5,6 +5,13 @@ import Life from './Life'
 // TODO:
 // * Get AI to gen icons for the cells; make sure they're in a good format and file size
 // is small.
+//   - https://www.npmjs.com/package/ai-icon-generator
+//   - horseshoe crab outline
+//   - When game is in pause mode, all cells have a black transparent bg
+//   - When it's running the bg goes away.
+//   - When a cell births/dies it has an animation on the bg image (crab fades in/out).
+//   - Will need to compare current to previous world state to figure out births/deaths.
+//   - These can go in their own matrices; one for birth and one for death.
 // * Make slider controls look better.
 // * Add favicon. favicon should match cell icons.
 // * Add a link to the github repo in the footer.
@@ -68,6 +75,7 @@ const App:React.FC = () => {
             <GameGrid 
                 numCols={life.numCols}
                 numRows={life.numRows}
+                paused={timerId == null}
                 isCellAlive={life.isCellAlive} 
                 onToggleCell={handleCellToggle} 
             />

@@ -73,6 +73,10 @@ input[type=range] {
     margin-top: -4px;
   }
 
+  /*
+  There's probably more styling that needs done with the slider for better
+  browser compatibility, but I'm not up to it.
+
   input[type=range]:focus::-webkit-slider-runnable-track {
   }
   
@@ -93,27 +97,38 @@ input[type=range] {
 
   input[type=range]:focus::-ms-fill-upper {
   }
+  */
 
 /* **************************************************************** */
 /* Classes */
 /* **************************************************************** */
-.alive {
-    background-color: lightgray;
-    border: 4px solid lightgray;
+/* This should only set the bg image. */
+.cell-alive {
+    background-color: lightgray !important; /* DEBUG: TEMP */
+    /* border: 4px solid lightgray; */
 }
 
+/* This should only set the size. */
 .cell {
-    height: 12px;
-    width: 12px;
+    /* height: 12px; */
+    /* width: 12px; */
+    height: 20px;
+    width: 20px;
+}
+
+/* .cell-dead { */
+    /* background-color: #222222; */
+    /* background-color: #22222233; */
+    /* border: 4px solid #22222233; */
+/* } */
+
+/* This should only set the bg color. */
+.cell-paused {
+    background-color: #00000033;
 }
 
 .clear {
     clear: both;
-}
-
-.dead {
-    background-color: #222222;
-    border: 4px solid #222222;
 }
 
 .float-left {

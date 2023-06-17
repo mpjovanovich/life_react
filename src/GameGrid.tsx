@@ -4,11 +4,13 @@ import Cell from './Cell'
 const GameGrid:React.FC<{
     numCols: number,
     numRows: number,
+    paused: boolean,
     isCellAlive: (col:number, row:number) => boolean,
     onToggleCell: (col:number, row:number) => void,
 }> = ({
     numCols,
     numRows,
+    paused,
     isCellAlive,
     onToggleCell,
 }) => {
@@ -26,6 +28,7 @@ const GameGrid:React.FC<{
                     key={cellNumber}
                     col={col}
                     row={row}
+                    paused={paused}
                     isAlive={isCellAlive(col,row)} 
                     onToggle={(col:number, row:number) => {onToggleCell(col,row)}}
                 />);
