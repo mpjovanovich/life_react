@@ -3,6 +3,9 @@ import GameGrid from "./GameGrid"
 import Life from './Life'
 
 // TODO:
+// * Add way to load common configurations: 
+//    - https://playgameoflife.com/lexicon
+//    - https://conwaylife.com/ref/lexicon/lex_home.htm
 // * Run accessibility/compatibility checks (lighthouse in browser dev toolbar)
 // * favicon note working...
 // * Add a link to the github repo in the footer.
