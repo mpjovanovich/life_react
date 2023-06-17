@@ -12,7 +12,7 @@ import Life from './Life'
 //   - When a cell births/dies it has an animation on the bg image (crab fades in/out).
 //   - Will need to compare current to previous world state to figure out births/deaths.
 //   - These can go in their own matrices; one for birth and one for death.
-// * Make slider controls look better.
+// * Run accessibility/compatibility checks (lighthouse in browser dev toolbar)
 // * Add favicon. favicon should match cell icons.
 // * Add a link to the github repo in the footer.
 // * Publish/host on replit. Send to friends and family.
