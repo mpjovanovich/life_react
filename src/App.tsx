@@ -6,6 +6,7 @@ import Life from './Life'
 // * Add way to load common configurations: 
 //    - https://playgameoflife.com/lexicon
 //    - https://conwaylife.com/ref/lexicon/lex_home.htm
+// * Add checkbox to toggle background animations for living/dying cells.
 // * Start states would ideally be in a dialog window. To start with just put a dropdown on the
 //   right side of the page with a descriptive text box under it. Init with a "custom" (empty) option.
 // * Run accessibility/compatibility checks (lighthouse in browser dev toolbar)
